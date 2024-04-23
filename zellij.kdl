@@ -1,0 +1,21 @@
+layout {
+	pane {
+		pane {}
+		pane split_direction="vertical" {
+			pane name="KATANA" command="bash"  {
+				args "-c" "katana --disable-fee; ${SHELL-bash}"
+			}
+			pane name="MIGRATION / TORII" command="bash"  {
+				args "-c" "cd dojo-starter; sleep 1s; sozo migrate apply; torii --world 0x446f1f19ba951b59935df72974f8ba6060e5fbb411ca21d3e3e3812e3eb8d; ${SHELL-bash}"
+			}
+			
+		}
+		pane split_direction="vertical" {
+			pane name="FRONTEND" command="bash"  {
+				args "-c" "cd client; bun dev; ${SHELL-bash}"
+			}
+		}
+		
+	}
+
+}
